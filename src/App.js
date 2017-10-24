@@ -1,32 +1,18 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import XMLParser from 'react-xml-parser';
 import axios from 'axios';
+import parseString from 'react-native-xml2js';
 
 class App extends Component {
-  state = { news: [] };
-
+  state = { newsItems: [] };
 
   componentWillMount() {
-    axios.get({
-    let text = response;
-      url: 'https://www.edie.net/news/rss0.xml',
-      method: 'get',
-      responseType: 'text'
-      })
-      .then(response => console.log(response))
-      .catch(err => console.log(err));
-  }
-
-  myXmlParser() {
-    const xml = new XMLParser().parseFromString(text);
-        console.log(xml);
-    console.log(xml.getElementsByTagName('title'));
+    axios.get('http://www.energylivenews.com/feed/')
+      .then(response => this.setState({ newsItems: response.data }));
   }
 
   render() {
-    console.log(this.state);
-
+    console.log(this.state.newsItems);
     return (
       <View>
         <Text>
