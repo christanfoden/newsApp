@@ -134,7 +134,7 @@ export default {
 
   // Footer
   footerHeight: isIphoneX ? 89 : 55,
-  footerDefaultBg: "#F8F8F8",
+  footerDefaultBg: "#000",
   footerPaddingBottom: isIphoneX ? 34 : 0,
 
   // FooterTab
@@ -142,8 +142,8 @@ export default {
   tabBarTextSize: platform === "ios" ? 14 : 11,
   activeTab: platform === "ios" ? "#007aff" : "#fff",
   sTabBarActiveTextColor: "#007aff",
-  tabBarActiveTextColor: "#FFF",
-  tabActiveBgColor: platform === "ios" ? "#B71D20" : undefined,
+  tabBarActiveTextColor: "#fff",
+  tabActiveBgColor: platform === "ios" ? "#4A90E2" : undefined,
 
   // Tab
   tabDefaultBg: "#2874F0",

@@ -13,7 +13,7 @@ import AppFooter from './src/components/appFooter';
 // import pages
 import News from './src/components/pages/News';
 import Events from './src/components/pages/Events';
-import Settings from './src/components/pages/Events';
+import Settings from './src/components/pages/Settings';
 
 import { Router, Scene } from 'react-native-router-flux';
 
@@ -26,9 +26,9 @@ export default class newsApp extends Component {
           {/* <News/> */}
           <Router>
             <Scene key="root">
-              <Scene key="news" component={News} title="News" />
-              <Scene key="events" component={Events} title="Events" />
-              <Scene key="settings" component={Settings} title="Settings" />
+              <Scene key="news" component={News} title="News" hideNavBar={true}/>
+              <Scene key="events" component={Events} title="Events" hideNavBar={true}/>
+              <Scene key="settings" component={Settings} title="Settings" hideNavBar={true}/>
             </Scene>
           </Router>
           <AppFooter/>
