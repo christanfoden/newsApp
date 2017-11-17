@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { Footer, FooterTab, Button, Icon } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 
 export default class AppFooter extends Component {
   render() {
     return (
       <Footer>
           <FooterTab>
-            <Button vertical>
-              <Icon active name="book" />
+            <Button vertical active onPress={Actions.News}>
+              <Icon name="book" />
               <Text>News</Text>
             </Button>
-            <Button vertical>
+            <Button vertical onPress={Actions.Events}>
               <Icon name="camera" />
-              <Text>Camera</Text>
+              <Text>Events</Text>
             </Button>
-            <Button vertical active>
+            <Button vertical onPress={Actions.Settings}>
               <Icon name="person" />
-              <Text>About</Text>
+              <Text>Settings</Text>
             </Button>
           </FooterTab>
         </Footer>
