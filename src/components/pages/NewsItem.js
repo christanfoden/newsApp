@@ -1,15 +1,31 @@
 import React, { Component } from 'react';
 import { Text, View, Image } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right } from 'native-base';
+import {
+  Container,
+  Header,
+  Content,
+  Card,
+  CardItem,
+  Thumbnail,
+  Button,
+  Icon,
+  Left,
+  Body,
+  Right
+} from 'native-base';
 import HTMLView from 'react-native-htmlview';
 import TimeAgo from 'react-native-timeago';
-import { ContentSnippet } from '../helpers/helper';
+
+import AppHeader from '../appHeader';
+import { ContentSnippet } from '../../helpers/helper';
 
 class NewsItem extends Component {
 
   render() {
-
-    let news = this.props.data.map(function(articleData, index){
+    let news = this
+    .props
+    .data
+    .map(function(articleData, index){
 
       return (
           <Card>
@@ -27,7 +43,7 @@ class NewsItem extends Component {
               </CardItem>
               <CardItem>
                   <Image
-                    source={require('../img/Artboard11.png')}
+                    source={require('../../img/Artboard11.png')}
                     style={{ width: 150, height: 60 }}
                   />
                   <Text>Id: {articleData._embedded.author.id}</Text>
@@ -61,9 +77,10 @@ class NewsItem extends Component {
     });
 
     return (
-      <Content>
-        {news}
-      </Content>
+      <Container>
+        <AppHeader />
+        <Content>{news}</Content>
+      </Container>
     );
   }
 }
