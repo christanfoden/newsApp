@@ -13,3 +13,14 @@ export function GetImage(content){
             return match[1];
          }
 }
+
+export function GetMedia() {
+  return fetch(`http://www.energylivenews.com/wp-json/wp/v2/media/${articleData.featured_media}`)
+    .then((response) => response.json())
+    .then((responseJson) => {
+      this.setState({ mediaID: responseJson });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}

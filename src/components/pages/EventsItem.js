@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, Alert } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import {
   Container,
   Header,
@@ -18,16 +18,11 @@ import TimeAgo from 'react-native-timeago';
 import FitImage from 'react-native-fit-image';
 
 import AppHeader from '../appHeader';
-import { ContentSnippet, GetImage } from '../../helpers/helper';
+import { GetImage } from '../../helpers/helper';
 
-class NewsItem extends Component {
-
-  _onPressArticle() {
-    Alert.alert('You tapped the article text')
-  }
+class EventsItem extends Component {
 
   render() {
-    console.log(this.state);
     let news = this
     .props
     .data
@@ -38,7 +33,7 @@ class NewsItem extends Component {
               <CardItem>
                 <Left>
                   {/* <Thumbnail source={{uri: 'https://pbs.twimg.com/profile_images/641945177939144708/IrqwXEgT.jpg'}} /> */}
-                  <Thumbnail source={{ uri: 'https://s3-us-west-2.amazonaws.com/slack-files2/avatars/2017-07-03/206606551280_14fc1110af6dd004fa61_132.png'}} />
+                  <Thumbnail source={{uri: 'https://s3-us-west-2.amazonaws.com/slack-files2/avatars/2017-07-03/206606551280_14fc1110af6dd004fa61_132.png'}} />
                   <Body>
                     <Text>
                       <HTMLView
@@ -51,26 +46,19 @@ class NewsItem extends Component {
               </CardItem>
               <CardItem>
                   <FitImage
-                    source={{uri: GetImage(articleData.content.rendered)}}
+                    // source={require('../../img/Artboard11.png')}
+                    source={{ uri: GetImage(articleData.content.rendered) }}
                     style={styles.fitImage}
                   />
-                  <Text>
-                    {articleData.featured_media}
-                  </Text>
                   {/* <Text>
-                    {articleData.better_featured_image.id}
+                    {articleData._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
                   </Text> */}
-                  {/* <Image
-                    source={articleData.better_featured_image.source_url}
-                    style={{ width: 50, height: 50 }}
-                  /> */}
               </CardItem>
               <CardItem content>
-                <HTMLView
-                  value={ContentSnippet(articleData.excerpt.rendered)}
-                  // onPress={this._onPressArticle}
+                {/* <HTMLView
+                  value={articleData.content.rendered}
                   // style={{ flex: 1 }}
-                />
+                /> */}
               </CardItem>
               <CardItem>
                 <Left>
@@ -85,19 +73,11 @@ class NewsItem extends Component {
                     <Icon active name="chatbubbles" />
                     <Text>4 Comments</Text>
                   </Button>
-                </Body> */}
+                </Body>
                 <Right>
-                  <Button
-                    onPress={this._onPressArticle}
-                    style={{ padding: 10 }}
-                    transparent
-                    >
-                      <Text>
-                        Read More ...
-                      </Text>
-                    </Button>
-                </Right>
-            </CardItem>
+                  <Text>11h ago</Text>
+                </Right> */}
+              </CardItem>
             </Card>
       );
     });
@@ -122,7 +102,7 @@ const styles = {
     paddingTop: 5
   },
   fitImage: {
-    borderRadius: 50,
+    borderRadius: 20,
   },
   fitImageWithSize: {
     height: 100,
@@ -130,4 +110,4 @@ const styles = {
   },
 };
 
-export default NewsItem;
+export default EventsItem;
