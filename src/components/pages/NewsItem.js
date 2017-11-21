@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, Alert } from 'react-native';
+import { Text, View, Image, Alert, Linking } from 'react-native';
 import {
   Container,
   Header,
@@ -21,10 +21,6 @@ import AppHeader from '../appHeader';
 import { ContentSnippet, GetImage } from '../../helpers/helper';
 
 class NewsItem extends Component {
-
-  _onPressArticle() {
-    Alert.alert('You tapped the article text')
-  }
 
   render() {
     console.log(this.state);
@@ -88,9 +84,11 @@ class NewsItem extends Component {
                 </Body> */}
                 <Right>
                   <Button
-                    onPress={this._onPressArticle}
+                    // onPress={() => {Alert.alert('You tapped an article 1')}}
+                    onPress={() => {Linking.openURL('https://www.futurism.com').catch(err => console.error('An error occured', err));}}
                     style={{ padding: 10 }}
                     transparent
+                    title="ok"
                     >
                       <Text>
                         Read More ...
