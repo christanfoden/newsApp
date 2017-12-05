@@ -14,6 +14,14 @@ export function GetImage(content){
          }
 }
 
+export function GetVideo(content){
+    var myRegexp = new RegExp(/<iframe.*?src="(.*?)"/);
+    var match = myRegexp.exec(content);
+        if (match){
+            return match[1];
+         }
+}
+
 export function GetMedia() {
   return fetch(`http://www.energylivenews.com/wp-json/wp/v2/media/${articleData.featured_media}`)
     .then((response) => response.json())

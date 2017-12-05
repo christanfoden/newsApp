@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, Platform } from 'react-native';
+import { AppRegistry, Platform, Text } from 'react-native';
 import firebase from 'firebase';
 import { Container, StyleProvider,  Header, Left, Right, Icon, Button, Body } from 'native-base';
 import FCM, {FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType} from 'react-native-fcm';

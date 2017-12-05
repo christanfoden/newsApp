@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import firebase from 'firebase';
-import { Button, Card, CardSection, Input, Spinner } from './common';
-
+import { CardSection, Input, Spinner, Button } from './common';
+import {
+  Container,
+  Header,
+  Content,
+  Card,
+  CardItem,
+  Thumbnail,
+  Icon,
+  Left,
+  Body,
+  Right
+} from 'native-base';
+import AppHeader from './appHeader';
 
 class LoginForm extends Component {
   state = { email: '', password: '', error: '', loading: false };
@@ -40,41 +52,71 @@ class LoginForm extends Component {
     }
 
     return (
-      <Button onPress={this.onButtonPress.bind(this)}>
-        Log In
+      <Button
+        transparent
+        bordered
+        full
+        // style={{ flex: 1 }}
+        onPress={this.onButtonPress.bind(this)}>
+        <Text style={styles.textStyle}>Log In</Text>
       </Button>
     );
   }
 
   render() {
     return (
-      <Card>
-        <CardSection>
-          <Input
-            placeholder="user@gmail.com"
-            label="Email"
-            value={this.state.email}
-            onChangeText={email => this.setState({ email })}
-          />
-        </CardSection>
-        <CardSection>
-          <Input
-            secureTextEntry
-            placeholder="password"
-            label="Password"
-            value={this.state.password}
-            onChangeText={password => this.setState({ password })}
-          />
-        </CardSection>
+      <Container>
+        <AppHeader />
+        <Content>
+          <CardItem style={styles.textStyle}>
+            <Text header style={{ fontWeight: 'bold', fontSize: 20 }}>Version 1.06</Text>
+            <Text style={{ color: 'grey', fontSize: 15, textAlign: 'center' }}>
+              By entering an email and password, an account will automatically be set up.
+              I'm afraid there exists no logic to for you to forget your password yet ...</Text>
+          </CardItem>
+          <Card>
+            <CardSection>
+              <Input
+                placeholder="user@gmail.com"
+                label="Email"
+                value={this.state.email}
+                onChangeText={email => this.setState({ email })}
+              />
+            </CardSection>
+            <CardSection>
+              <Input
+                secureTextEntry
+                placeholder="password"
+                label="Password"
+                value={this.state.password}
+                onChangeText={password => this.setState({ password })}
+              />
+            </CardSection>
 
-        <Text style={styles.errorTextStyle}>
-          {this.state.error}
-        </Text>
+            <Text style={styles.errorTextStyle}>
+              {this.state.error}
+            </Text>
 
-        <CardSection>
-          {this.renderButton()}
-        </CardSection>
-      </Card>
+            <CardSection>
+              {this.renderButton()}
+            </CardSection>
+            <CardItem header style={styles.textStyle}>
+              <Text style={{ color: 'grey', fontSize: 15, textAlign: 'center' }}>
+                "Somewhere, something incredible is waiting to be known."
+              </Text>
+              <Text />
+              <Text style={{
+                color: 'grey',
+                fontWeight: 'bold',
+                fontSize: 20
+               }}>
+                Carl Sagan
+              </Text>
+            </CardItem>
+          </Card>
+        </Content>
+      </Container>
+
     );
   }
 }
@@ -84,6 +126,14 @@ const styles = {
     fontSize: 20,
     alignSelf: 'center',
     color: 'red'
+  },
+  textStyle: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    alignSelf: 'center',
+    color: 'grey',
+    margin: 20
+    // fontSize: 20
   }
 };
 

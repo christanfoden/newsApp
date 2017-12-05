@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import {
   Container,
   Header,
@@ -18,7 +18,7 @@ import TimeAgo from 'react-native-timeago';
 import FitImage from 'react-native-fit-image';
 
 import AppHeader from '../appHeader';
-import { GetImage } from '../../helpers/helper';
+import { GetImage, GetVideo } from '../../helpers/helper';
 
 class EventsItem extends Component {
 
@@ -35,12 +35,16 @@ class EventsItem extends Component {
                   {/* <Thumbnail source={{uri: 'https://pbs.twimg.com/profile_images/641945177939144708/IrqwXEgT.jpg'}} /> */}
                   <Thumbnail source={{uri: 'https://s3-us-west-2.amazonaws.com/slack-files2/avatars/2017-07-03/206606551280_14fc1110af6dd004fa61_132.png'}} />
                   <Body>
-                    <Text>
+                    <TouchableOpacity
+                      style={styles.titleStyle}
+                      onPress={() => { Linking.openURL(articleData.link).catch(err => console.error('An error occured', err)); }}
+                      >
                       <HTMLView
                         value={articleData.title.rendered}
-                        style={styles.titleStyle}
+                        style={styles.htmlTitleStyle}
+                        // TextComponent={Text}
                       />
-                    </Text>
+                    </TouchableOpacity>
                   </Body>
                 </Left>
               </CardItem>

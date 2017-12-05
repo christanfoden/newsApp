@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, Alert, Linking } from 'react-native';
+import { Text, View, Image, Alert, Linking, TouchableHighlight, TouchableOpacity } from 'react-native';
 import {
   Container,
   Header,
@@ -29,44 +29,47 @@ class NewsItem extends Component {
     .data
     .map(function(articleData, index){
 
+    let img,
+    element = articleData.better_featured_image;
+    if (element != null) {
+      img = element.source_url;
+    }
+    else {
+      img = null;
+    }
+
       return (
           <Card key={index}>
               <CardItem>
                 <Left>
-                  {/* <Thumbnail source={{uri: 'https://pbs.twimg.com/profile_images/641945177939144708/IrqwXEgT.jpg'}} /> */}
                   <Thumbnail source={{ uri: 'https://s3-us-west-2.amazonaws.com/slack-files2/avatars/2017-07-03/206606551280_14fc1110af6dd004fa61_132.png'}} />
                   <Body>
-                    <Text>
+                    <TouchableOpacity
+                      style={styles.titleStyle}
+                      onPress={() => { Linking.openURL(articleData.link).catch(err => console.error('An error occured', err)); }}
+                      >
                       <HTMLView
                         value={articleData.title.rendered}
-                        style={styles.titleStyle}
+                        style={styles.htmlTitleStyle}
+                        // TextComponent={Text}
                       />
-                    </Text>
+                    </TouchableOpacity>
                   </Body>
                 </Left>
               </CardItem>
-              <CardItem>
-                  <FitImage
-                    source={{uri: GetImage(articleData.content.rendered)}}
-                    style={styles.fitImage}
-                  />
-                  <Text>
-                    {articleData.featured_media}
-                  </Text>
-                  {/* <Text>
-                    {articleData.better_featured_image.id}
-                  </Text> */}
-                  {/* <Image
-                    source={articleData.better_featured_image.source_url}
-                    style={{ width: 50, height: 50 }}
-                  /> */}
-              </CardItem>
-              <CardItem content>
-                <HTMLView
-                  value={ContentSnippet(articleData.excerpt.rendered)}
-                  // onPress={this._onPressArticle}
-                  // style={{ flex: 1 }}
+              <TouchableOpacity onPress={() => { Linking.openURL(articleData.link).catch(err => console.error('An error occured', err)); }}>
+                <FitImage
+                  source={{uri: `${img}`}}
+                  style={styles.fitImageWithSize}
                 />
+              </TouchableOpacity>
+              <CardItem>
+                <TouchableOpacity onPress={() => { Linking.openURL(articleData.link).catch(err => console.error('An error occured', err)); }}>
+                    <HTMLView
+                      value={ContentSnippet(articleData.excerpt.rendered)}
+                      // onLinkPress={() => { Linking.openURL(articleData.link).catch(err => console.error('An error occured', err)); }}
+                    />
+                </TouchableOpacity>
               </CardItem>
               <CardItem>
                 <Left>
@@ -84,16 +87,15 @@ class NewsItem extends Component {
                 </Body> */}
                 <Right>
                   <Button
-                    // onPress={() => {Alert.alert('You tapped an article 1')}}
-                    onPress={() => {Linking.openURL('https://www.futurism.com').catch(err => console.error('An error occured', err));}}
+                    onPress={() => { Linking.openURL(articleData.link).catch(err => console.error('An error occured', err)); }}
                     style={{ padding: 10 }}
                     transparent
                     title="ok"
                     >
-                      <Text>
+                      <Text style={{ color: 'blue' }}>
                         Read More ...
                       </Text>
-                    </Button>
+                  </Button>
                 </Right>
             </CardItem>
             </Card>
@@ -114,17 +116,21 @@ const styles = {
     width: 200,
     height: 20
   },
-  titleStyle: {
+  htmlTitleStyle: {
     width: 275,
     height: 50,
-    paddingTop: 5
+    paddingTop: 5,
+    color: 'blue'
+  },
+  titleStyle: {
+    color: 'blue'
   },
   fitImage: {
     borderRadius: 50,
   },
   fitImageWithSize: {
     height: 100,
-    width: 30,
+    width: 'auto'
   },
 };
 

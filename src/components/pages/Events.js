@@ -16,7 +16,7 @@ class News extends Component {
 
     return fetch('http://www.energylivenews.com/wp-json/wp/v2/pages')
     // return fetch('https://theenergyst.com/wp-json/wp/v2/posts?_embed')
-    // return fetch('http://www.offkey-ltd.com/news/wp-json/wp/v2/posts?_embed')
+    // return fetch('http://www.offkey-ltd.com/news/wp-json/wp/v2/pages?_embed')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({ newsItems: responseJson });
