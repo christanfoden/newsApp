@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "863933432148-4o5ef8ariasquee3ee1np4orvvitk0p2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.newsapp",
+            "certificate_hash": "06f7c013938f1d3eccfb3d4b62767a9eeb21da08"
+          }
+        },
+        {
           "client_id": "863933432148-omcgdn55mn7fmaunvm03ug87gbseod8f.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,20 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "863933432148-3hqagmndpjub4vklp24igh2uqjebcv9m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.offkey-ltd.news"
+              }
+            },
+            {
+              "client_id": "863933432148-omcgdn55mn7fmaunvm03ug87gbseod8f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

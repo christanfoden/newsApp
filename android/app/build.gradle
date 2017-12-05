@@ -77,6 +77,7 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply plugin: 'com.android.application'
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -138,11 +139,14 @@ android {
 
 dependencies {
     implementation 'com.google.firebase:firebase-messaging:11.0.4'
+    implementation 'com.google.firebase:firebase-core:11.0.4'
+    implementation 'com.google.firebase:firebase-auth:11.0.4'
     compile project(':react-native-fcm')
     compile project(':react-native-vector-icons')
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.facebook.react:react-native:+'
+//    compile 'com.google.firebase:firebase-core:11.0.4'
     // From node_modules
 }
 
