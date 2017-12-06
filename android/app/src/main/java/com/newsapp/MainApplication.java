@@ -1,4 +1,4 @@
-package com.newsapp;
+package com.newsapp.offkey;
 
 import android.app.Application;
 

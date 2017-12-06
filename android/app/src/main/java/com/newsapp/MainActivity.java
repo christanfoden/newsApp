@@ -1,4 +1,4 @@
-package com.newsapp;
+package com.newsapp.offkey;
 
 import com.facebook.react.ReactActivity;
 

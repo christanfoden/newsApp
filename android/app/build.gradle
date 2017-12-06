@@ -99,7 +99,7 @@ android {
     buildToolsVersion '26.0.2'
 
     defaultConfig {
-        applicationId "com.newsapp"
+        applicationId "com.newsapp.offkey"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
